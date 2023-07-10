@@ -1,3 +1,5 @@
+package com.booking.notification;
+
 import lombok.extern.slf4j.Slf4j;
 import model.AppUser;
 import org.springframework.context.annotation.Profile;
@@ -32,10 +34,6 @@ public class DevEmailService implements EmailService{
 
     }
 
-    @Override
-    public void sendEnrollmentSuccessMessage(AppUser user,String courseName) {
-
-    }
 
     @Override
     public void sendLoginOtp(AppUser appUser, String token) {

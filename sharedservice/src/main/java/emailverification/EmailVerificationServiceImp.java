@@ -1,6 +1,7 @@
 package emailverification;
 
 
+import com.booking.notification.EmailService;
 import exceptions.BookingMgtException;
 import lombok.RequiredArgsConstructor;
 import model.AppUser;

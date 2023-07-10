@@ -1,6 +1,9 @@
 package auth.config;
 
+import exceptions.BookingMgtException;
 import lombok.RequiredArgsConstructor;
+import model.AppUser;
+import model.SecureUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +12,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import user.UserService;
 
 @RequiredArgsConstructor
 @Configuration
@@ -25,7 +29,7 @@ public class AuthBeanConfig {
             try {
                 AppUser user = userService.findUserByEmail(email);
                 return new SecureUser(user);
-            } catch (LearningMgtException e) {
+            } catch (BookingMgtException e) {
                 throw new RuntimeException(e);
             }
         };

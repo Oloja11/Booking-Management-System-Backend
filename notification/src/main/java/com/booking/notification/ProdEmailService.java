@@ -1,7 +1,10 @@
+package com.booking.notification;
+
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import model.AppUser;
+import model.dto.request.SendEmailRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ResourceLoader;
@@ -85,7 +88,7 @@ public class ProdEmailService implements  EmailService {
         String  message = String.format(readHtmlFile("reset.html"),capitalize(user.getFirstName().toLowerCase() ));
         sendEmail(SendEmailRequest.builder()
                 .emailAddress(user.getEmail())
-                .subject("PASSWORD RESET SUCCESS - 02HERO LEARNING MANAGEMENT")
+                .subject("PASSWORD RESET SUCCESS -  BOOKING MANAGEMENT")
                 .message(message)
                 .build());
     }
@@ -94,35 +97,14 @@ public class ProdEmailService implements  EmailService {
     public void resendEmailVerificationOTP(AppUser user, String token) {
         sendEmail(SendEmailRequest.builder()
                 .emailAddress(user.getEmail())
-                .subject("Verify your Email  - 02HERO LEARNING MANAGEMENT")
+                .subject("Verify your Email  - BOOKING MANAGEMENT")
                 .message("""
-                        WELCOME TO 02HERO lEARNING MANAGEMENT
+                        WELCOME TO BOOKING MANAGEMENT
                         click on this link to verify your email
                                  """ + frontEndHost + "verify_email/" + token)
                 .build());
     }
 
-    @Override
-    public void sendEnrollmentSuccessMessage(AppUser user,String courseName) {
-
-        sendEmail(SendEmailRequest.builder()
-                .emailAddress(user.getEmail())
-                .subject("ENROLLMENT SUCCESSFUL! - 02HERO LEARNING MANAGEMENT")
-                .message(String.format("""
-                                Dear %s%n%n,
-                                
-                                Congratulations! You have successfully enrolled in %s on O2hero learning system. 
-                                %n%n
-                                We are delighted to have you as part of our learning community.
-                                %n%n
-                                Kind regards,
-                                %n%n
-                                The O2HeroTech team.
-                                """,user.getFirstName(),courseName
-                ))
-                .build());
-
-    }
 
     @Override
     public void sendLoginOtp(AppUser appUser, String otp) {

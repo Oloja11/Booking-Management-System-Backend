@@ -1,3 +1,5 @@
+package com.booking.notification;
+
 import model.AppUser;
 
 public interface EmailService {
@@ -11,7 +13,6 @@ public interface EmailService {
 
     void resendEmailVerificationOTP(AppUser user, String email);
 
-    void  sendEnrollmentSuccessMessage(AppUser user,String course);
 
     void sendLoginOtp(AppUser appUser, String otp);
 

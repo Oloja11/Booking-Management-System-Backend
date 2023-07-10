@@ -3,7 +3,7 @@ spring:
     name: bookingMgt
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     generate-ddl: true
 
   datasource:
@@ -11,3 +11,20 @@ spring:
     url: ${MySQL_DB}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: 587
+    username: ${MAIL_LOGIN}
+    password: ${MAIL_PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+bms:
+  app:
+    SecretKey: ${SECRET_KEY}
+    frontend-host: ${FRONTEND_HOST}
+    loginAttempts: ${LOGIN_ATTEMPTS}
+    lockedDuration: ${LOCKED_DURATION}
