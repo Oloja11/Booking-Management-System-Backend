@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Verification Email</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .signature {
+            margin-top: 2em;
+            font-style: italic;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<p>Dear %s,</p>
+<p>Thank you for signing up for the  booking management system. </p>
+<p>As an added security measure, we require all users to enter a one-time password (OTP) when logging in to their
+    accounts</p>
+<p>Your OTP for today is: <strong>%s</strong></p>
+<p>Please enter this code in the provided field to access your account.</p>
+<p>Please note that this OTP is valid for only one login session and will expire in 5 minutes.</p>
+<p>Thank you for choosing our BMS.</p>
+<p class="signature">Best regards,<br>Booking team.</p>
+</body>
+</html>

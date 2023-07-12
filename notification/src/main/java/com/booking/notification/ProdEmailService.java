@@ -41,7 +41,7 @@ public class ProdEmailService implements  EmailService {
 
         sendEmail(SendEmailRequest.builder()
                 .emailAddress(user.getEmail())
-                .subject("Verification for your 02hero LMS account")
+                .subject("Verification for your BMS account")
                 .message(String.format(readHtmlFile("welcome.html"),
                         capitalize(user.getFirstName().toLowerCase()),
                         frontEndHost + "verify_email/" + token))
@@ -75,7 +75,7 @@ public class ProdEmailService implements  EmailService {
     public void sendEmailVerificationSuccessMessage(AppUser user) {
         sendEmail(SendEmailRequest.builder()
                 .emailAddress(user.getEmail())
-                .subject("EMAIL VERIFIED SUCCESSFULLY - 02HERO LEARNING MANAGEMENT")
+                .subject("EMAIL VERIFIED SUCCESSFULLY - BOOKING MANAGEMENT")
                 .message("""
                         your email has been successfully verified, click <a href="%s">HERE</a> to login
                                 """.formatted(frontEndHost + "login"))
@@ -110,7 +110,7 @@ public class ProdEmailService implements  EmailService {
     public void sendLoginOtp(AppUser appUser, String otp) {
         sendEmail(SendEmailRequest.builder()
                 .emailAddress(appUser.getEmail())
-                .subject("Your One-Time Password (OTP) for 02HeroTech consulting")
+                .subject("Your One-Time Password (OTP) ")
                 .message(readHtmlFile("otp.html").formatted(capitalize(appUser.getFirstName().toLowerCase()), otp))
                 .build());
     }
