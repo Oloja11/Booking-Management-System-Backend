@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: bookingMgt
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MySQL_DB}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: 587
+    username: ${MAIL_LOGIN}
+    password: ${MAIL_PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+bms:
+  app:
+    SecretKey: ${SECRET_KEY}
+    frontend-host: ${FRONTEND_HOST}
+    loginAttempts: ${LOGIN_ATTEMPTS}
+    lockedDuration: ${LOCKED_DURATION}

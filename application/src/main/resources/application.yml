@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: bookingMgt
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/bookingMgt?createDatabaseIfNotExist=true
+    username: root
+    password: Akinnusi098$
+  banner:
+    location: banner.txt
+bms:
+  admin:
+    email: akinnusivictor098@gmail.com
+  app:
+    SecretKey: 404E635266556A586E3272357538782SecureUserF413F4428472B4B6250645367566B5970
+    loginAttempts: 3
+    lockedDuration: 30
+server:
+  port: 8083
