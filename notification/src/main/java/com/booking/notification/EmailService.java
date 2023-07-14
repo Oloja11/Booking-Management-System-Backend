@@ -1,6 +1,6 @@
 package com.booking.notification;
 
-import model.AppUser;
+import com.booking.data.model.AppUser;
 
 public interface EmailService {
     void sendRegistrationEmail(AppUser appUser, String token);
