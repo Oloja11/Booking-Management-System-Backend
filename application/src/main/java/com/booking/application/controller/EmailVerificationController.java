@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("api/learning-mgt/v1/auth")
+@RequestMapping("api/booking-mgt/v1/auth")
 @RequiredArgsConstructor
 public class EmailVerificationController {
 
