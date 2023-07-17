@@ -24,7 +24,7 @@ public class EmailVerificationServiceImp implements EmailVerificationService{
                 .verifyTokenAndFind(token, TokenType.EMAIL_VERIFICATION);
         AppUser user = userService.findUserByEmail(verificationToken.getEmail());
         user.setVerified(true);
-//        user.setEnabled(true);
+       user.setEnabled(true);
         userService.saveUser(user);
         emailService.sendEmailVerificationSuccessMessage(user);
         verificationTokenService.deleteToken(verificationToken.getId());
