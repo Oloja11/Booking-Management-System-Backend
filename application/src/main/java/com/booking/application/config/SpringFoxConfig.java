@@ -26,9 +26,9 @@ public class SpringFoxConfig {
     public OpenAPI appInfo() {
 
         Server server = new Server();
-        if (Objects.equals(value, "jdbc:mysql://localhost/bookingMgt")) {
+        if (Objects.equals(value, "jdbc:postgresql://localhost:5433/bookingMgt")) {
             server.setUrl("http://localhost:8083");
-        }else server.setUrl("https://booking-management-system-production.up.railway.app");
+        }else server.setUrl("https://bookingmgt.onrender.com");
         String securitySchemeName = "bearerAuth";
         return new OpenAPI()
                 .servers(List.of(server))

@@ -3,12 +3,12 @@ spring:
     name: bookingMgt
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     generate-ddl: true
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${MySQL_DB}
+    driver-class-name: org.postgresql.Driver
+    url: ${PostGreSQL_DB}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   mail:
