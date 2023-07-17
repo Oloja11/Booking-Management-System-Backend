@@ -1,17 +1,19 @@
 package com.booking.data.model;
 
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
 
+
+@AllArgsConstructor
 public class SecureUser implements UserDetails {
 
     private AppUser appUser;
 
-    public SecureUser(AppUser user) {
-    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

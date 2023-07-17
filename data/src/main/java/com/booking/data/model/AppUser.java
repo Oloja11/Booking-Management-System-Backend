@@ -1,5 +1,6 @@
 package com.booking.data.model;
 
+import com.booking.data.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +31,7 @@ public class AppUser {
     private boolean isVerified;
     @OneToMany
     private List<Notification> notifications;
+    private Role role;
     private boolean enabled;
     private String passwordResetToken;
     private String loginToken;
