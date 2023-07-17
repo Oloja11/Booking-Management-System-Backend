@@ -10,6 +10,9 @@
     </parent>
 
     <artifactId>application</artifactId>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
     <dependencies>
 
