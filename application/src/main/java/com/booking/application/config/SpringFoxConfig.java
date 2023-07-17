@@ -9,10 +9,15 @@ import io.swagger.v3.oas.models.servers.Server;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 import java.util.Objects;
 
+
+@Configuration
+@EnableWebMvc
 public class SpringFoxConfig {
 
     @Value("${spring.datasource.url}")
