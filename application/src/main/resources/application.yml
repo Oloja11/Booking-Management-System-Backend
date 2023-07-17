@@ -5,11 +5,11 @@ spring:
     hibernate:
       ddl-auto: create
     generate-ddl: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/bookingMgt
-    username: postgres
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/bookingMgt?createDatabaseIfNotExist=true
+    username: root
     password: Akinnusi098$
   banner:
     location: banner.txt

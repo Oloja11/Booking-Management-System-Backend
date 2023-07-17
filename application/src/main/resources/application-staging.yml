@@ -7,8 +7,8 @@ spring:
     generate-ddl: true
 
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: ${PostGreSQL_DB}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MySQL_DB}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   mail:
