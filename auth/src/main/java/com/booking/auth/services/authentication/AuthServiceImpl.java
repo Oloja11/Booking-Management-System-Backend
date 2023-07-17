@@ -1,6 +1,7 @@
 package com.booking.auth.services.authentication;
 
 import com.booking.auth.services.jwt.JwtService;
+import com.booking.data.model.enums.Role;
 import com.booking.notification.EmailService;
 import com.booking.data.exceptions.BookingMgtException;
 import lombok.RequiredArgsConstructor;
@@ -74,10 +75,10 @@ public class AuthServiceImpl implements AuthService {
         verificationTokenService.delete(appUser.getEmail(), TokenType.LOGIN_OTP);
         SecureUser user = new SecureUser(appUser);
         String jwtToken = jwtService.generateToken(user);
-//        if (appUser.getRole() != Role.STUDENT) {
-//            VerificationToken verificationToken = verificationTokenService.createLoginOtp(appUser.getEmail());
-//            emailService.sendLoginOtp(appUser, verificationToken.getToken());
-//        }
+        if (appUser.getRole() != Role.CUSTOMER) {
+            VerificationToken verificationToken = verificationTokenService.createLoginOtp(appUser.getEmail());
+            emailService.sendLoginOtp(appUser, verificationToken.getToken());
+        }
         return jwtToken;
     }
 
@@ -97,7 +98,8 @@ public class AuthServiceImpl implements AuthService {
         verificationTokenService.deleteToken(verificationToken.getId());
         AppUser appUser = userService.findUserByEmail(verificationToken.getEmail());
         return Map.of(
-                "message", "login verified"
+                "message", "login verified",
+                "role",appUser.getRole().name()
                 );
     }
 
