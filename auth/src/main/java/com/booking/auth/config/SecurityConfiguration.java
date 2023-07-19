@@ -26,6 +26,7 @@ public class SecurityConfiguration {
     private final UnAuthorizedEntryPoint unAuthorizedEntryPoint;
     private final String[] NO_AUTH_ROUTES = {
             "/api/booking-mgt/v1/user/sign-up", "/api/booking-mgt/v1/auth/**",
+            "/api/booking-mgt/v1/business",
             // swagger ui docs
             "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**"
     };

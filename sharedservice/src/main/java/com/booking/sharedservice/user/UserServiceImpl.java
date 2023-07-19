@@ -9,7 +9,7 @@ import com.booking.data.model.Validator;
 import com.booking.data.model.VerificationToken;
 import com.booking.data.model.dto.request.RegistrationRequest;
 import com.booking.data.model.dto.response.RegistrationResponse;
-import com.booking.data.model.repository.UserRepository;
+import com.booking.data.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

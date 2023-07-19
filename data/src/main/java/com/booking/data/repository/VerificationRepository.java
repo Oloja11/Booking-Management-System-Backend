@@ -1,4 +1,4 @@
-package com.booking.data.model.repository;
+package com.booking.data.repository;
 
 import com.booking.data.model.VerificationToken;
 import com.booking.data.model.enums.TokenType;

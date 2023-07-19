@@ -5,7 +5,7 @@ import com.booking.data.exceptions.BookingMgtException;
 import lombok.RequiredArgsConstructor;
 import com.booking.data.model.VerificationToken;
 import com.booking.data.model.enums.TokenType;
-import com.booking.data.model.repository.VerificationRepository;
+import com.booking.data.repository.VerificationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
