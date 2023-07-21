@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServceOfferingRequest {
-       private String name;
+public class ServiceOfferingRequest {
+    private String name;
     private String description;
-    private String businessId;
+
     private String imageUrl;
 }

@@ -23,5 +23,6 @@ public class Business {
     private String description;
     private String industry;
     private long creatorId;
+    private String userId;
 
 }

@@ -5,7 +5,7 @@ services:
 
     restart: always
     environment:
-      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_USERNAME=root
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - '3306:3306'

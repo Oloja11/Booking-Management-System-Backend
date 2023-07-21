@@ -9,5 +9,5 @@ public interface BusinessService {
 
 
 
-    Business getBusiness(String businessId) throws BookingMgtException;
+    Business getBusiness(long userId) throws BookingMgtException;
 }

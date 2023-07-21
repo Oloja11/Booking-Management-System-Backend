@@ -1,5 +1,6 @@
 package com.booking.sharedservice.user;
 
+import com.booking.data.model.enums.Role;
 import com.booking.notification.EmailService;
 import com.booking.data.exceptions.BookingMgtException;
 import com.booking.sharedservice.verification.VerificationTokenService;
@@ -48,9 +49,8 @@ public class UserServiceImpl implements  UserService{
         validateRegistrationRequest(registrationRequest);
         registrationRequest.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         AppUser appUser = mapper.map(registrationRequest, AppUser.class);
-        VerificationToken verificationToken = verificationTokenService.createRegistrationToken(appUser.getEmail());
+        appUser.setRole(Role.USER);
         userRepository.save(appUser);
-        emailService.sendRegistrationEmail(appUser, verificationToken.getToken());
         return mapper.map(appUser, RegistrationResponse.class);
     }
 

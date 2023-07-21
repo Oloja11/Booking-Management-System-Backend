@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@EnableMethodSecurity
 public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -27,6 +29,7 @@ public class SecurityConfiguration {
     private final String[] NO_AUTH_ROUTES = {
             "/api/booking-mgt/v1/user/sign-up", "/api/booking-mgt/v1/auth/**",
             "/api/booking-mgt/v1/business",
+            "api/booking-mgt/v1/service-offering",
             // swagger ui docs
             "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**"
     };

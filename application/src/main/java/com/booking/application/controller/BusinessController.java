@@ -3,6 +3,7 @@ package com.booking.application.controller;
 import com.booking.BusinessRequest;
 import com.booking.BusinessService;
 import com.booking.data.exceptions.BookingMgtException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class BusinessController {
     private final BusinessService businessService;
 
     @PostMapping
-    public ResponseEntity<String> createBusiness(@RequestBody BusinessRequest businessRequest) throws BookingMgtException {
+    public ResponseEntity<String> createBusiness(@RequestBody @Valid BusinessRequest businessRequest) throws BookingMgtException {
         return ResponseEntity.ok(businessService.createBusiness(businessRequest));
     }
 }

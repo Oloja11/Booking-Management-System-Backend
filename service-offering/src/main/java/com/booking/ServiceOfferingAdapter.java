@@ -18,9 +18,9 @@ public class ServiceOfferingAdapter {
     private final BusinessService businessService;
 
 
-    public String createServiceOffering(ServceOfferingRequest serviceOfferingRequest) throws BookingMgtException {
+    public String createServiceOffering(ServiceOfferingRequest serviceOfferingRequest, SecureUser secureUser) throws BookingMgtException {
         ServiceOffering serviceOffering = modelMapper.map(serviceOfferingRequest, ServiceOffering.class);
-        serviceOffering.setBusinessId(businessService.getBusiness(serviceOfferingRequest.getBusinessId()).getId());
+        serviceOffering.setBusinessId(businessService.getBusiness(secureUser.getAppUser().getId()).getId());
         serviceOfferingRepository.save(serviceOffering);
         return "Service Offering created successfully";
     }

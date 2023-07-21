@@ -1,13 +1,12 @@
 package com.booking.application.controller;
 
-import com.booking.BookingRequest;
-import com.booking.ServceOfferingRequest;
+import com.booking.ServiceOfferingRequest;
 import com.booking.ServiceOfferingAdapter;
 import com.booking.data.exceptions.BookingMgtException;
 import com.booking.data.model.SecureUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +17,13 @@ public class ServiceOfferingController {
     private final ServiceOfferingAdapter serviceOfferingAdapter;
 
     @PostMapping
-    public ResponseEntity<?> createServiceOffering(@RequestBody ServceOfferingRequest servceOfferingRequest) throws BookingMgtException {
-        return ResponseEntity.ok(serviceOfferingAdapter.createServiceOffering(servceOfferingRequest));
+    @PreAuthorize("hasAuthority('BUSINESS')")
+    public ResponseEntity<?> createServiceOffering(@RequestBody ServiceOfferingRequest serviceOfferingRequest, @AuthenticationPrincipal SecureUser secureUser) throws BookingMgtException {
+        return ResponseEntity.ok(serviceOfferingAdapter.createServiceOffering(serviceOfferingRequest, secureUser));
     }
-    
+
     @PostMapping("/book/{serviceId}")
+    @PreAuthorize("hasAuthority('BUSINESS')")
     public ResponseEntity<?> bookServiceOffering(@PathVariable String serviceId, @AuthenticationPrincipal SecureUser secureUser) throws BookingMgtException {
         return ResponseEntity.ok(serviceOfferingAdapter.bookServiceOffering(serviceId, secureUser));
     }
