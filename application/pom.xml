@@ -31,9 +31,17 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>com.booking</groupId>
-            <artifactId>business</artifactId>
+            <artifactId>booking</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.booking</groupId>
+            <artifactId>service-offering</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -58,7 +58,6 @@ public class AuthServiceImpl implements AuthService {
             } else {
                 userService.registerFailedLogin(appUser);
             }
-            if (!appUser.isEnabled()) sendAccountLockedErrorMessage(appUser);
             throw new BookingMgtException("Invalid username or password");
         } catch (DisabledException ex) {
             if (appUser.getFailedLoginAttempt() == LOGIN_ATTEMPTS - 1) sendAccountLockedErrorMessage(appUser);
