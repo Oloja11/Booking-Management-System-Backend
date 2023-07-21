@@ -1,17 +1,19 @@
 package com.booking.auth.services.authentication;
 
 import com.booking.auth.services.jwt.JwtService;
-import com.booking.data.model.enums.Role;
-import com.booking.notification.EmailService;
 import com.booking.data.exceptions.BookingMgtException;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import com.booking.data.model.AppUser;
 import com.booking.data.model.SecureUser;
 import com.booking.data.model.VerificationToken;
 import com.booking.data.model.dto.request.LoginRequest;
 import com.booking.data.model.dto.response.LoginResponse;
+import com.booking.data.model.enums.Role;
 import com.booking.data.model.enums.TokenType;
+import com.booking.notification.EmailService;
+import com.booking.sharedservice.user.UserService;
+import com.booking.sharedservice.verification.VerificationTokenService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,8 +23,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import com.booking.sharedservice.user.UserService;
-import com.booking.sharedservice.verification.VerificationTokenService;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

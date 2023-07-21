@@ -1,14 +1,14 @@
 package com.booking.sharedservice.emailverification;
 
 
-import com.booking.notification.EmailService;
 import com.booking.data.exceptions.BookingMgtException;
-import com.booking.sharedservice.user.UserService;
-import com.booking.sharedservice.verification.VerificationTokenService;
-import lombok.RequiredArgsConstructor;
 import com.booking.data.model.AppUser;
 import com.booking.data.model.VerificationToken;
 import com.booking.data.model.enums.TokenType;
+import com.booking.notification.EmailService;
+import com.booking.sharedservice.user.UserService;
+import com.booking.sharedservice.verification.VerificationTokenService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service

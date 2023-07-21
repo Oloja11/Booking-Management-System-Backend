@@ -1,10 +1,10 @@
 package com.booking.data.model.dto.response;
 
 
+import com.booking.data.model.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import com.booking.data.model.AppUser;
 
 @AllArgsConstructor
 @Data

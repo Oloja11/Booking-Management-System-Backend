@@ -1,14 +1,12 @@
 package com.booking.application.utils;
 
 import com.booking.data.exceptions.BookingMgtException;
-import lombok.extern.slf4j.Slf4j;
 import com.booking.data.model.APIError;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import java.sql.SQLIntegrityConstraintViolationException;
 
 @ControllerAdvice
 @Slf4j

@@ -22,7 +22,7 @@
 			<module>sharedservice</module>
 			<module>notification</module>
             <module>business</module>
-            <module>booking</module>
+
             <module>service-offering</module>
         </modules>
 
