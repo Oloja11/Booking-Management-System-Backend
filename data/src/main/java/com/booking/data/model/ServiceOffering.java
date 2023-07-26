@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Data
@@ -21,7 +20,7 @@ public class ServiceOffering {
 
     @Id
     @UuidGenerator
-    private String id;
+    private String serviceId;
     private String name;
     private String description;
     private String businessId;

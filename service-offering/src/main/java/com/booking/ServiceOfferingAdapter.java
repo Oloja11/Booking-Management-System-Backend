@@ -40,7 +40,7 @@ public class ServiceOfferingAdapter {
                 () -> new BookingMgtException("Service Offering not found")
         );
         Booking booking = new Booking();
-        booking.setAppUser(secureUser.getAppUser());
+        booking.setUserEmail(secureUser.getAppUser().getEmail());
         booking.setBookingStatus(BookingStatus.PENDING);
         bookingRepo.saveAndFlush(booking);
         serviceOffering.getBookings().add(booking);
@@ -56,8 +56,8 @@ public class ServiceOfferingAdapter {
     private void toggleStatus(String serviceId, String userEmail, BookingStatus accepted) {
         ServiceOffering serviceOffering = serviceOfferingRepository.findById(serviceId).orElseThrow();
         List<Booking> bookings = serviceOffering.getBookings();
-        Booking booking = bookings.stream().filter(booking1 -> booking1.getAppUser()
-                .getEmail().equals(userEmail)).findFirst().orElseThrow();
+        Booking booking = bookings.stream().filter(booking1 -> booking1.getUserEmail()
+                .equals(userEmail)).findFirst().orElseThrow();
         bookings.remove(booking);
         booking.setBookingStatus(accepted);
         bookingRepo.saveAndFlush(booking);

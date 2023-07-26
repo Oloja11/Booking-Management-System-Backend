@@ -23,12 +23,12 @@ public class ServiceOfferingController {
     }
 
     @PostMapping("/book/{serviceId}")
-    @PreAuthorize("hasAuthority('BUSINESS')")
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<?> bookServiceOffering(@PathVariable String serviceId, @AuthenticationPrincipal SecureUser secureUser) throws BookingMgtException {
         return ResponseEntity.ok(serviceOfferingAdapter.bookServiceOffering(serviceId, secureUser));
     }
 
-       @PostMapping("/cancel/{serviceId}/{userEmail}")
+    @PostMapping("/accept/{serviceId}/{userEmail}")
     @PreAuthorize("hasAuthority('BUSINESS')")
     public ResponseEntity<?> acceptBooking(@PathVariable String serviceId, @PathVariable String userEmail) throws BookingMgtException {
         return ResponseEntity.ok(serviceOfferingAdapter.acceptBooking(serviceId, userEmail));
