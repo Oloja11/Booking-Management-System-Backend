@@ -22,4 +22,5 @@ public class BusinessRequest {
     private String email;
     @NotEmpty
     private String password;
+    private String firstName;
 }
