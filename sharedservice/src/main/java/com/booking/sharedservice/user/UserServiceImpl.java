@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements  UserService{
 
-    private final VerificationTokenService verificationTokenService;
+
 
     private final UserRepository userRepository;
 
@@ -48,6 +48,8 @@ public class UserServiceImpl implements  UserService{
         validateRegistrationRequest(registrationRequest);
         registrationRequest.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         AppUser appUser = mapper.map(registrationRequest, AppUser.class);
+        appUser.setEnabled(true);
+        appUser.setVerified(true);
         appUser.setRole(Role.USER);
         userRepository.save(appUser);
         return mapper.map(appUser, RegistrationResponse.class);

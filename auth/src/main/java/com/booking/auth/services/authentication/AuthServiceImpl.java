@@ -53,15 +53,7 @@ public class AuthServiceImpl implements AuthService {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (BadCredentialsException e) {
-            if (appUser.getFailedLoginAttempt() == LOGIN_ATTEMPTS - 1) {
-                userService.disableUser(appUser);
-            } else {
-                userService.registerFailedLogin(appUser);
-            }
             throw new BookingMgtException("Invalid username or password");
-        } catch (DisabledException ex) {
-            if (appUser.getFailedLoginAttempt() == LOGIN_ATTEMPTS - 1) sendAccountLockedErrorMessage(appUser);
-            throw new BookingMgtException("please verify your email");
         }
         String jwtToken = performSuccessLogin(appUser);
         return LoginResponse.of(jwtToken, appUser.getId(), appUser);

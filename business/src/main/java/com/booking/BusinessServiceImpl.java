@@ -24,6 +24,8 @@ public class BusinessServiceImpl implements BusinessService {
         ensureUniqueVal(businessRequest);
         businessRequest.setPassword(passwordEncoder.encode(businessRequest.getPassword()));
         AppUser appUser = mapper.map(businessRequest, AppUser.class);
+        appUser.setEnabled(true);
+        appUser.setVerified(true);
         appUser.setRole(Role.BUSINESS);
         userRepository.save(appUser);
         Business business = mapper.map(businessRequest, Business.class);
@@ -34,11 +36,12 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
 
-
     @Override
     public Business getBusiness(long businessId) throws BookingMgtException {
         return businessRepository.findByCreatorId(businessId).orElseThrow(() -> new BookingMgtException("Business not found"));
     }
+
+
 
     private void ensureUniqueVal(BusinessRequest businessRequest) throws BookingMgtException {
         if (userRepository.existsByEmail(businessRequest.getEmail())) {

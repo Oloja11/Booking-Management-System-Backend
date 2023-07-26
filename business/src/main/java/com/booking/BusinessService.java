@@ -6,8 +6,5 @@ import com.booking.data.model.Business;
 public interface BusinessService {
 
     String createBusiness(BusinessRequest businessRequest) throws BookingMgtException;
-
-
-
     Business getBusiness(long userId) throws BookingMgtException;
 }

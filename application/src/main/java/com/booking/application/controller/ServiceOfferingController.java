@@ -28,6 +28,19 @@ public class ServiceOfferingController {
         return ResponseEntity.ok(serviceOfferingAdapter.bookServiceOffering(serviceId, secureUser));
     }
 
+       @PostMapping("/cancel/{serviceId}/{userEmail}")
+    @PreAuthorize("hasAuthority('BUSINESS')")
+    public ResponseEntity<?> acceptBooking(@PathVariable String serviceId, @PathVariable String userEmail) throws BookingMgtException {
+        return ResponseEntity.ok(serviceOfferingAdapter.acceptBooking(serviceId, userEmail));
+    }
+
+
+    @PostMapping("/cancel/{serviceId}/{userEmail}")
+    @PreAuthorize("hasAuthority('BUSINESS')")
+    public ResponseEntity<?> cancelBooking(@PathVariable String serviceId, @PathVariable String userEmail) throws BookingMgtException {
+        return ResponseEntity.ok(serviceOfferingAdapter.cancelBooking(serviceId, userEmail));
+    }
+
 
     @GetMapping("/{page}/{size}")
     public ResponseEntity<?> getAllServiceOffering(@PathVariable int page, @PathVariable int size) {

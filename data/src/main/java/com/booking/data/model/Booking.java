@@ -2,30 +2,21 @@ package com.booking.data.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.List;
-import java.util.Map;
-
 @Entity
-@Data
-@Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class ServiceOffering {
-
+@Data
+public class Booking {
     @Id
     @UuidGenerator
     private String id;
-    private String name;
-    private String description;
-    private String businessId;
-    private String imageUrl;
-    @OneToMany
-    private List<Booking> bookings;
+    private BookingStatus bookingStatus;
+    @OneToOne
+    private AppUser appUser;
 }
