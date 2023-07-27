@@ -68,6 +68,6 @@ public class ServiceOfferingAdapter {
 
     public String cancelBooking(String serviceId, String userEmail) {
         toggleStatus(serviceId, userEmail, BookingStatus.REJECTED);
-        return "Booking accepted successfully";
+        return "Booking canceled successfully";
     }
 }
