@@ -3,14 +3,14 @@ spring:
     name: bookingMgt
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     generate-ddl: true
     database-platform: org.hibernate.dialect.MySQLDialect
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/bookingMgt?createDatabaseIfNotExist=true
     username: root
-    password: password
+    password: Akinnusi098$
   banner:
     location: banner.txt
 bms:
