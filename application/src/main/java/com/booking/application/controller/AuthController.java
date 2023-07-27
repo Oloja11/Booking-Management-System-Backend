@@ -3,9 +3,9 @@ package com.booking.application.controller;
 
 import com.booking.auth.services.authentication.AuthService;
 import com.booking.data.exceptions.BookingMgtException;
-import lombok.RequiredArgsConstructor;
 import com.booking.data.model.dto.request.LoginRequest;
 import com.booking.data.model.dto.response.LoginResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

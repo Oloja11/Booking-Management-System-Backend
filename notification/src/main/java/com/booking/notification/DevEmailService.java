@@ -1,7 +1,7 @@
 package com.booking.notification;
 
-import lombok.extern.slf4j.Slf4j;
 import com.booking.data.model.AppUser;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 

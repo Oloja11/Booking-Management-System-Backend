@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
-import java.util.Objects;
 
 
 @Configuration
@@ -31,12 +30,12 @@ public class SpringFoxConfig {
     public OpenAPI appInfo() {
 
         Server server = new Server();
-        if (Objects.equals(value, "jdbc:mysql://localhost/bookingMgt")) {
-            server.setUrl("http://localhost:8083");
-        }else server.setUrl("https://booking-management-production.up.railway.app");
+         server.setUrl("https://booking-management-production.up.railway.app");
+         Server server1 = new Server();
+            server1.setUrl("http://localhost:8080");
         String securitySchemeName = "bearerAuth";
         return new OpenAPI()
-                .servers(List.of(server))
+                .servers(List.of(server,server1))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(
                         new Components()

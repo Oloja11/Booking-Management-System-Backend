@@ -1,15 +1,15 @@
 package com.booking.sharedservice.user;
 
-import com.booking.notification.EmailService;
 import com.booking.data.exceptions.BookingMgtException;
-import com.booking.sharedservice.verification.VerificationTokenService;
-import lombok.RequiredArgsConstructor;
 import com.booking.data.model.AppUser;
 import com.booking.data.model.Validator;
-import com.booking.data.model.VerificationToken;
 import com.booking.data.model.dto.request.RegistrationRequest;
 import com.booking.data.model.dto.response.RegistrationResponse;
+import com.booking.data.model.enums.Role;
 import com.booking.data.repository.UserRepository;
+import com.booking.notification.EmailService;
+import com.booking.sharedservice.verification.VerificationTokenService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements  UserService{
 
-    private final VerificationTokenService verificationTokenService;
+
 
     private final UserRepository userRepository;
 
@@ -49,9 +49,10 @@ public class UserServiceImpl implements  UserService{
         validateRegistrationRequest(registrationRequest);
         registrationRequest.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         AppUser appUser = mapper.map(registrationRequest, AppUser.class);
-        VerificationToken verificationToken = verificationTokenService.createRegistrationToken(appUser.getEmail());
+        appUser.setEnabled(true);
+        appUser.setVerified(true);
+        appUser.setRole(Role.USER);
         userRepository.save(appUser);
-        emailService.sendRegistrationEmail(appUser, verificationToken.getToken());
         return mapper.map(appUser, RegistrationResponse.class);
     }
 

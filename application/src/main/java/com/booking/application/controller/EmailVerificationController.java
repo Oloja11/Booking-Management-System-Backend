@@ -1,7 +1,7 @@
 package com.booking.application.controller;
 
-import com.booking.sharedservice.emailverification.EmailVerificationService;
 import com.booking.data.exceptions.BookingMgtException;
+import com.booking.sharedservice.emailverification.EmailVerificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

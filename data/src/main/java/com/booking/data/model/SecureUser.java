@@ -1,23 +1,27 @@
 package com.booking.data.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 
 @AllArgsConstructor
+@Getter
+@Setter
 public class SecureUser implements UserDetails {
 
     private AppUser appUser;
 
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(() -> appUser.toString());
+        return List.of(new SimpleGrantedAuthority(appUser.getRole().name()));
     }
 
     public String getUserId() {
@@ -51,6 +55,8 @@ public class SecureUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return appUser.isEnabled();
+        return true;
     }
+
+
 }

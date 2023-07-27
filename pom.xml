@@ -22,18 +22,16 @@
 			<module>sharedservice</module>
 			<module>notification</module>
             <module>business</module>
+
+            <module>service-offering</module>
         </modules>
 
 		<properties>
 			<java.version>17</java.version>
 		</properties>
 
-
-
 		<dependencies>
 
-
-			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>

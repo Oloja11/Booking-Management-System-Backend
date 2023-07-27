@@ -1,11 +1,11 @@
 package com.booking.data.model;
 
+import com.booking.data.model.enums.TokenType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import com.booking.data.model.enums.TokenType;
 
 import java.time.LocalDateTime;
 

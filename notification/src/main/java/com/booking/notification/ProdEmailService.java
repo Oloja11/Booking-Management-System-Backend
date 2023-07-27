@@ -1,10 +1,10 @@
 package com.booking.notification;
 
+import com.booking.data.model.AppUser;
+import com.booking.data.model.dto.request.SendEmailRequest;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.booking.data.model.AppUser;
-import com.booking.data.model.dto.request.SendEmailRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ResourceLoader;
