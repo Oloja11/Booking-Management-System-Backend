@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/booking-mgt/v1/service-offering")
 @RequiredArgsConstructor
 public class ServiceOfferingController {
+
     private final ServiceOfferingAdapter serviceOfferingAdapter;
 
     @PostMapping
@@ -30,20 +31,23 @@ public class ServiceOfferingController {
 
     @PostMapping("/accept/{serviceId}/{userEmail}")
     @PreAuthorize("hasAuthority('BUSINESS')")
-    public ResponseEntity<?> acceptBooking(@PathVariable String serviceId, @PathVariable String userEmail) throws BookingMgtException {
+    public ResponseEntity<?> acceptBooking(@PathVariable String serviceId, @PathVariable String userEmail) {
         return ResponseEntity.ok(serviceOfferingAdapter.acceptBooking(serviceId, userEmail));
     }
 
-
     @PostMapping("/cancel/{serviceId}/{userEmail}")
     @PreAuthorize("hasAuthority('BUSINESS')")
-    public ResponseEntity<?> cancelBooking(@PathVariable String serviceId, @PathVariable String userEmail) throws BookingMgtException {
+    public ResponseEntity<?> cancelBooking(@PathVariable String serviceId, @PathVariable String userEmail) {
         return ResponseEntity.ok(serviceOfferingAdapter.cancelBooking(serviceId, userEmail));
     }
-
 
     @GetMapping("/{page}/{size}")
     public ResponseEntity<?> getAllServiceOffering(@PathVariable int page, @PathVariable int size) {
         return ResponseEntity.ok(serviceOfferingAdapter.getAllServiceOffering(page, size));
+    }
+
+    @GetMapping("/{userEmail}/{page}/{size}")
+    public ResponseEntity<?> getAllServiceOfferingByUserEmail(@PathVariable String userEmail, @PathVariable int page, @PathVariable int size) {
+        return ResponseEntity.ok(serviceOfferingAdapter.getAllServiceOfferingByUserEmail(userEmail, page, size));
     }
 }

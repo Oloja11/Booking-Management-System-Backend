@@ -60,6 +60,7 @@ public class ServiceOfferingAdapter {
                 .equals(userEmail)).findFirst().orElseThrow();
         bookings.remove(booking);
         booking.setBookingStatus(accepted);
+        booking.setServiceOffering(serviceOffering);
         bookingRepo.saveAndFlush(booking);
         bookings.add(booking);
         serviceOffering.setBookings(bookings);
@@ -69,5 +70,11 @@ public class ServiceOfferingAdapter {
     public String cancelBooking(String serviceId, String userEmail) {
         toggleStatus(serviceId, userEmail, BookingStatus.REJECTED);
         return "Booking accepted successfully";
+    }
+
+    public Page<Booking> getAllServiceOfferingByUserEmail(String userEmail, int page, int size) {
+
+        return bookingRepo.findAllByUserEmail(userEmail, PageRequest.of(page, size));
+
     }
 }

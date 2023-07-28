@@ -2,6 +2,7 @@ package com.booking.data.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +20,7 @@ public class Booking {
     private String bookingId;
     private BookingStatus bookingStatus;
     private String userEmail;
+    @OneToOne
+    private ServiceOffering serviceOffering;
     private LocalDateTime bokkingDate = LocalDateTime.now();
 }
