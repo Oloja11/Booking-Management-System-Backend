@@ -8,6 +8,7 @@ import com.booking.data.model.ServiceOffering;
 import com.booking.data.repository.BookingRepo;
 import com.booking.data.repository.ServiceOfferingRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ServiceOfferingAdapter {
     private final ServiceOfferingRepository serviceOfferingRepository;
     private final ModelMapper modelMapper;
@@ -26,7 +28,9 @@ public class ServiceOfferingAdapter {
 
     public String createServiceOffering(ServiceOfferingRequest serviceOfferingRequest, SecureUser secureUser) throws BookingMgtException {
         ServiceOffering serviceOffering = modelMapper.map(serviceOfferingRequest, ServiceOffering.class);
+        log.info("Service Offering: {}", serviceOffering);
         serviceOffering.setBusinessId(businessService.getBusiness(secureUser.getAppUser().getId()).getId());
+        log.info("set businness id Service Offering: {}", serviceOffering);
         serviceOfferingRepository.save(serviceOffering);
         return "Service Offering created successfully";
     }
@@ -53,13 +57,14 @@ public class ServiceOfferingAdapter {
         return "Booking accepted successfully";
     }
 
-    private void toggleStatus(String serviceId, String userEmail, BookingStatus accepted) {
-        ServiceOffering serviceOffering = serviceOfferingRepository.findById(serviceId).orElseThrow();
+    private void toggleStatus(String serviceId, String userEmail, BookingStatus status) {
+        ServiceOffering serviceOffering = serviceOfferingRepository.findById(serviceId)
+                .orElseThrow(() -> new RuntimeException("Service Offering not found"));
         List<Booking> bookings = serviceOffering.getBookings();
         Booking booking = bookings.stream().filter(booking1 -> booking1.getUserEmail()
                 .equals(userEmail)).findFirst().orElseThrow();
         bookings.remove(booking);
-        booking.setBookingStatus(accepted);
+        booking.setBookingStatus(status);
         booking.setServiceOffering(serviceOffering);
         bookingRepo.saveAndFlush(booking);
         bookings.add(booking);

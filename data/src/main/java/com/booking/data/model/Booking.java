@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @AllArgsConstructor
@@ -22,5 +23,5 @@ public class Booking {
     private String userEmail;
     @OneToOne
     private ServiceOffering serviceOffering;
-    private LocalDateTime bokkingDate = LocalDateTime.now();
+    private String bookingDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 }

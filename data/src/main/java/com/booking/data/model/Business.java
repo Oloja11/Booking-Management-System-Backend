@@ -3,10 +3,7 @@ package com.booking.data.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -14,6 +11,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Business {
     @Id
     @UuidGenerator
