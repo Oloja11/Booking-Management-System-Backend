@@ -5,12 +5,15 @@ This document provides a comprehensive guide to the implementation
 of app user registration, email verification, login, logout ,Booking services. These features are essential for creating a
 secure and user-friendly web application for user to book an appointment in a business 
 The implementation adheres to professional best practices and security
-standards to ensure a robust and reliable user authentication system</p>
+standards to ensure a robust and reliable user authentication system
 
 ### Table of Contents
-
- - [Technologies used](#Technologies-used)
- - [Setup](#Setup)
+- [Getting Started](#Get_started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+   - [Running the Project](#running-the-project)
+- [Usage](#usage)
+- [Endpoints](#endpoints)
 
 ## Getting Started
 
@@ -22,26 +25,57 @@ These instructions will help you get a copy of the project up and running on you
 - [Maven](https://maven.apache.org/) (version 3.9.9 or higher)
 - [MySql](https://www.mysql.com/) (version 8.0.0 or higher)
 
-
+### Installation
 
 
 1. Technologies Used:<br/>Java, MySQL for database storage, JSON Web Tokens (JWT) for secure user authentication
    Express Validator for input validation.
 2. Setup
-   Clone the repository and navigate to the project directory.
-   Configure the database connection to connect to your local workbench
+   Create a MySQL database and update the database connection details in the `application.yml` file.
+3. Build the project using Maven:
 
-3. User Registration
-   A user can register on the application by providing a valid email address and a strong password. And other details
-4. User Login
-   Registered users can log in using their verified email and password.
-   Upon successful login, a JSON Web Token (JWT) is generated and sent to the client.
-   The JWT is used for subsequent authenticated requests to protected routes.
-5. User Logout
-   Users can log out of the application, which invalidates the JWT and requires re-authentication.
-6. Security Considerations
-   Passwords are never stored in plaintext, they are encoded
-7. Make sure your application is up and running after installation of all the dependencies 
-8. Use a tool like Postman, or a web browser to interact with the endpoints. For example , to perform a login , send a POST request
-   to `http://localhost:8083/api/booking-mgt/v1/auth/login` with appropriate credentials in the request body 
-   if this request is successful.. Congratulations! You've successfully set up and run the Spring Boot application with the 
+```bash
+mvn package
+```
+### Running the Project
+
+To run the project locally, follow these steps:
+
+```bash
+java -jar target/project-name-X.X.X.jar
+```
+
+The application will be running at `http://localhost:8083`.
+
+
+## Usage
+
+### Prerequisites
+
+Before using this project, ensure that you have the following software installed on your machine:
+
+- Java 17 or later
+- Maven
+4. Build the project with Maven:
+
+```bash
+mvn clean install
+```
+
+4. Start the application with Maven:
+
+```bash
+mvn spring-boot:run
+```
+The application will start and be available at `http://localhost:8083`. You can access the API endpoints using your preferred HTTP client, such as [Postman](https://www.postman.com/) or `curl`.
+
+### API Endpoints
+
+Here are the available API endpoints:
+
+| Method | Endpoint                               | Description                             |
+|--------|----------------------------------------|-----------------------------------------|
+| POST   | api/booking-mgt/v1/user/sign-up        | This will allow the user to sign up     |
+| POST   | api/booking-mgt/v1/auth/login          | This will allow the user to login       |
+| POST   | api/booking-mgt/v1/auth/logout/{email} | logout by providing your email as user  |
+| POST   | api/booking-mgt/v1/business            | Create Business as a Business owner     |
