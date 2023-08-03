@@ -23,18 +23,12 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(loginRequest));
     }
 
-//    @PostMapping("/verify-login/{otp}")
-//    public ResponseEntity<Map<String, String>> verifyLogin(@PathVariable String otp) throws BookingMgtException {
-//        return ResponseEntity.ok(authService.verifyLogin(otp));
-//    }
+
 
     @PostMapping("/logout/{email}")
     public ResponseEntity<String> logout(@PathVariable String email) {
         return ResponseEntity.ok(authService.logout(email));
     }
 
-//    @PostMapping("/resend-verify-login-otp/{email}")
-//    public ResponseEntity<String> resendVerifyLoginOtp(@PathVariable String email) throws BookingMgtException {
-//        return ResponseEntity.ok(authService.resendVerifyLoginOtp(email));
-//    }
+
 }

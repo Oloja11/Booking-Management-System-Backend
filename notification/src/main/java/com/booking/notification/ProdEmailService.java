@@ -57,18 +57,10 @@ public class ProdEmailService implements  EmailService {
                 """;
 
         String message = String.format("""
-                        There was a request to change your password!
-                        If you did not make this request, please ignore this email.
-                                """ + link, frontEndHost + "reset_password/" + token);
+                There was a request to change your password!
+                If you did not make this request, please ignore this email.
+                        """ + link, frontEndHost + "reset_password/" + token);
 
-//        if (user.getRole().equals(Role.STUDENT)) {
-//            link = "";
-//        }
-//        sendEmail(SendEmailRequest.builder()
-//                .emailAddress(user.getEmail())
-//                .subject("PASSWORD RESET EMAIL - 02HERO LEARNING MANAGEMENT ")
-//                .message(message)
-//                .build());
     }
 
     @Override
