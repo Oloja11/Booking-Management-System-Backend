@@ -73,9 +73,17 @@ The application will start and be available at `http://localhost:8083`. You can 
 
 Here are the available API endpoints:
 
-| Method | Endpoint                               | Description                             |
-|--------|----------------------------------------|-----------------------------------------|
-| POST   | api/booking-mgt/v1/user/sign-up        | This will allow the user to sign up     |
-| POST   | api/booking-mgt/v1/auth/login          | This will allow the user to login       |
-| POST   | api/booking-mgt/v1/auth/logout/{email} | logout by providing your email as user  |
-| POST   | api/booking-mgt/v1/business            | Create Business as a Business owner     |
+| Method | Endpoint                                                           | Description                                                              |
+|--------|--------------------------------------------------------------------|--------------------------------------------------------------------------|
+| POST   | api/booking-mgt/v1/user/sign-up                                    | This will allow the user to sign up                                      |
+| POST   | api/booking-mgt/v1/auth/login                                      | This will allow the user to login                                        |
+| POST   | api/booking-mgt/v1/auth/logout/{email}                             | logout by providing your email as user                                   |
+| POST   | api/booking-mgt/v1/business                                        | Create Business as a Business owner                                      |
+| POST   | api/booking-mgt/v1/service-offering                                | Create a service offering                                                |
+| POST   | api/booking-mgt/v1/service-offering/book/{serviceId}               | Book a service with specific service Id                                  |
+| POST   | api/booking-mgt/v1/service-offering/accept/{serviceId}/{userEmail} | Accept a service with specific service Id and User Email                 |
+| POST   | api/booking-mgt/v1/service-offering/book/{serviceId} | Book a service with specific service Id                                  |
+| POST   | api/booking-mgt/v1/service-offering/cancel/{serviceId}/{userEmail} | cancel a service with specific service Id and userEmail                  |
+| GET    | api/booking-mgt/v1/service-offering/{page}/{size}| Get all service  offering by passing number of pages and size            |
+| GET    | api/booking-mgt/v1/service-offering//{userEmail}/{page}/{size}| Get all service  offering by userEmail, passing number of pages and size |
+
