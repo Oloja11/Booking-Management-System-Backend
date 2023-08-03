@@ -1,27 +1,28 @@
-<H1>Booking System Documentation</H1>
+### Booking System Documentation
 
-<p>Introduction
+### Introduction
 This document provides a comprehensive guide to the implementation 
 of app user registration, email verification, login, logout ,Booking services. These features are essential for creating a
-secure and user-friendly web application for user to purchase airtime 
+secure and user-friendly web application for user to book an appointment in a business 
 The implementation adheres to professional best practices and security
 standards to ensure a robust and reliable user authentication system</p>
 
-<H1>Table of Contents</H1>
-Technologies used
-<br/>
-Setup
-<br/>
-User Registration
-<br/>
-User Login
-<br/>
-User Logout
-<br/>
-Security Configuration
-<br/>
-Services
-<br/>
+### Table of Contents
+
+ - [Technologies used](#Technologies-used)
+ - [Setup](#Setup)
+
+## Getting Started
+
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+- [Java](https://www.java.com/) (version 17 )
+- [Maven](https://maven.apache.org/) (version 3.9.9 or higher)
+- [MySql](https://www.mysql.com/) (version 8.0.0 or higher)
+
+
 
 
 1. Technologies Used:<br/>Java, MySQL for database storage, JSON Web Tokens (JWT) for secure user authentication
