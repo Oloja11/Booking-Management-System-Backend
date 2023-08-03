@@ -2,8 +2,7 @@
 
 <p>Introduction
 This document provides a comprehensive guide to the implementation 
-of app user registration, email verification, login, logout , VTU 
-functionality. These features are essential for creating a
+of app user registration, email verification, login, logout ,Booking services. These features are essential for creating a
 secure and user-friendly web application for user to purchase airtime 
 The implementation adheres to professional best practices and security
 standards to ensure a robust and reliable user authentication syste</p>
