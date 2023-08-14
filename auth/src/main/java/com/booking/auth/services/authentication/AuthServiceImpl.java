@@ -55,7 +55,7 @@ public class AuthServiceImpl implements AuthService {
         } catch (BadCredentialsException e) {
             throw new BookingMgtException("Invalid username or password");
         }
-        String jwtToken = performSuccessLogin(appUser);
+       String jwtToken = performSuccessLogin(appUser);
         return LoginResponse.of(jwtToken, appUser.getId(), appUser);
     }
 
@@ -65,18 +65,17 @@ public class AuthServiceImpl implements AuthService {
         userService.saveUser(appUser);
         verificationTokenService.delete(appUser.getEmail(), TokenType.LOGIN_OTP);
         SecureUser user = new SecureUser(appUser);
-        String jwtToken = jwtService.generateToken(user);
-        if (appUser.getRole() != Role.CUSTOMER) {
-            VerificationToken verificationToken = verificationTokenService.createLoginOtp(appUser.getEmail());
-            emailService.sendLoginOtp(appUser, verificationToken.getToken());
-        }
-        return jwtToken;
+        //        if (appUser.getRole() != Role.CUSTOMER) {
+//            VerificationToken verificationToken = verificationTokenService.createLoginOtp(appUser.getEmail());
+//            emailService.sendLoginOtp(appUser, verificationToken.getToken());
+//        }
+        return jwtService.generateToken(user);
     }
 
-    private void sendAccountLockedErrorMessage(AppUser appUser) throws BookingMgtException {
-        long minutes = ChronoUnit.MINUTES.between(appUser.getTimeLocked(), LocalDateTime.now());
-        throw new BookingMgtException(String.format("Too many login attempts. account locked. try again after %d minutes", ACCOUNT_LOCK_DURATION - minutes));
-    }
+//    private void sendAccountLockedErrorMessage(AppUser appUser) throws BookingMgtException {
+//        long minutes = ChronoUnit.MINUTES.between(appUser.getTimeLocked(), LocalDateTime.now());
+//        throw new BookingMgtException(String.format("Too many login attempts. account locked. try again after %d minutes", ACCOUNT_LOCK_DURATION - minutes));
+//    }
 
     @Override
     public String logout(String email) {
