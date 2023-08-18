@@ -4,4 +4,4 @@ RUN mvn package
 
 FROM openjdk:17
 COPY --from=build application/target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "-Dserver.port=${PORT}","-Dspring.profiles.active=staging","app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dserver.port=8080","app.jar"]
