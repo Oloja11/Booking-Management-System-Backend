@@ -54,7 +54,7 @@ on linux: https://docs.docker.com/engine/install/ubuntu/
 # 2. run the following command in the root directory of the project
 
 ```bash
-docker-compose up -d
+docker-compose up 
 ```
 
 after few minutes the application will be up and running

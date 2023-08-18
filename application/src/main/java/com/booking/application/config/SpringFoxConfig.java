@@ -19,23 +19,17 @@ import java.util.List;
 @EnableWebMvc
 public class SpringFoxConfig {
 
-    @Value("${spring.datasource.url}")
-    private String value;
-
-
-
-
 
     @Bean
     public OpenAPI appInfo() {
 
         Server server = new Server();
-         server.setUrl("https://booking-management-production.up.railway.app");
-         Server server1 = new Server();
-            server1.setUrl("http://localhost:8080");
+        server.setUrl("https://booking-management-production.up.railway.app");
+        Server server1 = new Server();
+        server1.setUrl("http://localhost:8080");
         String securitySchemeName = "bearerAuth";
         return new OpenAPI()
-                .servers(List.of(server,server1))
+                .servers(List.of(server1, server))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(
                         new Components()
