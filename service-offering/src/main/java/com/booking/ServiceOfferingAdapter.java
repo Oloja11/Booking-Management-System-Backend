@@ -39,16 +39,15 @@ public class ServiceOfferingAdapter {
         return serviceOfferingRepository.findAll(PageRequest.of(page, size));
     }
 
-    public String bookServiceOffering(String serviceId, SecureUser secureUser) throws BookingMgtException {
-        ServiceOffering serviceOffering = serviceOfferingRepository.findById(serviceId).orElseThrow(
-                () -> new BookingMgtException("Service Offering not found")
-        );
+    public String bookServiceOffering(String serviceId, SecureUser secureUser) {
+        if (!serviceOfferingRepository.existsById(serviceId)) {
+            throw new RuntimeException("Service Offering not found");
+        }
         Booking booking = new Booking();
         booking.setUserEmail(secureUser.getAppUser().getEmail());
         booking.setBookingStatus(BookingStatus.PENDING);
+        booking.setServiceOfferingId(serviceId);
         bookingRepo.saveAndFlush(booking);
-        serviceOffering.getBookings().add(booking);
-        serviceOfferingRepository.save(serviceOffering);
         return "Service Offering booked successfully";
     }
 
@@ -58,18 +57,16 @@ public class ServiceOfferingAdapter {
     }
 
     private void toggleStatus(String serviceId, String userEmail, BookingStatus status) {
-        ServiceOffering serviceOffering = serviceOfferingRepository.findById(serviceId)
-                .orElseThrow(() -> new RuntimeException("Service Offering not found"));
-        List<Booking> bookings = serviceOffering.getBookings();
-        Booking booking = bookings.stream().filter(booking1 -> booking1.getUserEmail()
-                .equals(userEmail)).findFirst().orElseThrow();
-        bookings.remove(booking);
+        if (!serviceOfferingRepository.existsById(serviceId)) {
+            throw new RuntimeException("Service Offering not found");
+        }
+        List<Booking> bookings = bookingRepo.findByUserEmailAndServiceOfferingId(userEmail, serviceId);
+        if (bookings.isEmpty()) {
+            throw new RuntimeException("Booking not found");
+        }
+        Booking booking = bookings.get(0);
         booking.setBookingStatus(status);
-        booking.setServiceOffering(serviceOffering);
         bookingRepo.saveAndFlush(booking);
-        bookings.add(booking);
-        serviceOffering.setBookings(bookings);
-        serviceOfferingRepository.save(serviceOffering);
     }
 
     public String cancelBooking(String serviceId, String userEmail) {

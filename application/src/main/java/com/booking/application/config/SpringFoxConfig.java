@@ -19,7 +19,6 @@ import java.util.List;
 @EnableWebMvc
 public class SpringFoxConfig {
 
-
     @Bean
     public OpenAPI appInfo() {
 

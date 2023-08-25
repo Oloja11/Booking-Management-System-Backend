@@ -1,5 +1,6 @@
 package com.booking.data.model;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -9,6 +10,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,6 +27,6 @@ public class ServiceOffering {
     private String description;
     private String businessId;
     private String imageUrl;
-    @OneToMany
-    private List<Booking> bookings;
+    @ElementCollection
+    private List<String> bookingIds = new ArrayList<>();
 }

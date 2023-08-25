@@ -21,7 +21,6 @@ public class Booking {
     private String bookingId;
     private BookingStatus bookingStatus;
     private String userEmail;
-    @OneToOne
-    private ServiceOffering serviceOffering;
+    private String serviceOfferingId;
     private String bookingDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 }
