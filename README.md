@@ -23,19 +23,12 @@ standards to ensure a robust and reliable user authentication system
 These instructions will help you get a copy of the project up and running on your local machine for development and
 testing purposes.
 
-### Prerequisites
+### Technologies Used
 
 - [Java](https://www.java.com/) (version 17 )
 - [Maven](https://maven.apache.org/) (version 3.9.9 or higher)
 - [MySql](https://www.mysql.com/) (version 8.0.0 or higher)
 
-### Installation
-
-1. Technologies Used:<br/>Java, MySQL for database storage, JSON Web Tokens (JWT) for secure user authentication
-   Express Validator for input validation.
-2. Setup
-   Create a MySQL database and update the database connection details in the `application.yml` file.
-3. Build the project using Maven:
 
 ### Running the Project
 

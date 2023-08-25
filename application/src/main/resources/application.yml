@@ -8,17 +8,16 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/bookingManagement?createDatabaseIfNotExist=true
+    url: jdbc:mysql://containers-us-west-98.railway.app:6223/railway
     username: root
-    password: Akinnusi098$
+    password: 2YZGT9b1PYxfDLyiNwrb
   banner:
     location: banner.txt
 bms:
   admin:
-    email:
+    email: admin@mail.com
   app:
     SecretKey: 404E635266556A586E3272357538782SwecureUserF413F4428472B4B6250645367566B5970
     loginAttempts: 3
     lockedDuration: 30
-server:
-  port: 8083
+
